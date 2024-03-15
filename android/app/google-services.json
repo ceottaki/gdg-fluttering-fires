@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "296143356306",
+    "project_id": "gdg-iom",
+    "storage_bucket": "gdg-iom.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:296143356306:android:7e2fea690bab62e8a8c14b",
+        "android_client_info": {
+          "package_name": "com.example.gdgflutter_demo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFtKJLJeKjx_h9qJ-omBx8SHoy9QWqFjc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
