@@ -28,9 +28,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: name,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF8B72BE)),
       ),
-      home: const GameScreen(),
+      home: const HomeScreen(),
     );
   }
 }
