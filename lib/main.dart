@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:gdgflutter_demo/firebase_options.dart';
-import 'package:gdgflutter_demo/game_screen.dart';
 import 'package:gdgflutter_demo/game_state.dart';
+import 'package:gdgflutter_demo/home_screen.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    final name = context.select((GameState s) => s.name);
+    final name = context.select((GameState s) => s.gameName);
     return MaterialApp(
       title: name,
       theme: ThemeData(

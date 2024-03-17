@@ -6,14 +6,9 @@ import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 
 class GameState extends ChangeNotifier {
-  final String name = 'Tap Madness';
+  final String gameName = 'Tap Madness';
   final nameController = TextEditingController();
   String get playerName => nameController.text;
-  final Stream<QuerySnapshot> finishedGames = FirebaseFirestore.instance
-      .collection('games')
-      .orderBy('taps', descending: true)
-      .limit(30)
-      .snapshots();
   static const gameDuration = 5.0;
   double gameTimeLeft = gameDuration;
   bool isPlaying = false;
@@ -21,6 +16,11 @@ class GameState extends ChangeNotifier {
   int taps = 0;
   final confettiController =
       ConfettiController(duration: const Duration(milliseconds: 1));
+  final Stream<QuerySnapshot> finishedGames = FirebaseFirestore.instance
+      .collection('games')
+      .orderBy('taps', descending: true)
+      .limit(30)
+      .snapshots();
 
   GameState() {
     nameController.addListener(notifyListeners);
