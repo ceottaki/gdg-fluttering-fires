@@ -24,7 +24,25 @@ class _GameSetup extends StatelessWidget {
   // TODO STEP 3: Replace with _GameSetup build method
   @override
   Widget build(BuildContext context) {
-    return const Placeholder(fallbackHeight: 200);
+    return Card(
+      margin: EdgeInsets.zero,
+      color: Colors.white.withOpacity(0.7),
+      elevation: 0,
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Who\'s playing?',
+              style: Theme.of(context).textTheme.titleSmall,
+            ),
+            const SizedBox(height: 8),
+            const _NameAndGoRow(),
+          ],
+        ),
+      ),
+    );
   }
 }
 
@@ -33,7 +51,14 @@ class _NameAndGoRow extends StatelessWidget {
   // TODO STEP 4: Replace with _NameAndGoRow build method
   @override
   Widget build(BuildContext context) {
-    return const Placeholder(fallbackHeight: 200);
+    return const Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Expanded(child: _NameTextField()),
+        SizedBox(width: 12),
+        _GoButton(),
+      ],
+    );
   }
 }
 
@@ -72,7 +97,11 @@ class _PlayArea extends StatelessWidget {
   // TODO STEP 5: Replace with _PlayArea build method
   @override
   Widget build(BuildContext context) {
-    return const Placeholder(fallbackHeight: 200);
+    final isStarting = context.select((GameState s) => s.isStarting);
+    return SizedBox(
+      height: 150,
+      child: isStarting ? const _Countdown() : const _TapTapTap(),
+    );
   }
 }
 
@@ -144,6 +173,33 @@ class _TapButton extends StatelessWidget {
   // TODO STEP 6: Replace with _TapButton build method
   @override
   Widget build(BuildContext context) {
-    return const Placeholder(fallbackHeight: 44);
+    final isPlaying = context.select((GameState s) => s.isPlaying);
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        ConfettiWidget(
+          confettiController: context.read<GameState>().confettiController,
+          blastDirectionality: BlastDirectionality.explosive,
+          emissionFrequency: 1.0,
+          shouldLoop: false,
+          colors: const [
+            Colors.green,
+            Colors.blue,
+            Colors.pink,
+            Colors.orange,
+            Colors.purple
+          ],
+          createParticlePath: context.read<GameState>().drawStar,
+        ),
+        FilledButton(
+          onPressed: isPlaying ? context.read<GameState>().tap : null,
+          style: FilledButton.styleFrom(
+            shape: const CircleBorder(),
+            padding: const EdgeInsets.all(20),
+          ),
+          child: const Icon(Icons.plus_one, size: 44),
+        ),
+      ],
+    );
   }
 }

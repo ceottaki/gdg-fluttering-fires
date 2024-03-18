@@ -18,7 +18,11 @@ class GameState extends ChangeNotifier {
       ConfettiController(duration: const Duration(milliseconds: 1));
 
   //TODO Step 8: Replace with finishedGames initialization
-  final Stream<QuerySnapshot> finishedGames = const Stream.empty();
+  final Stream<QuerySnapshot> finishedGames = FirebaseFirestore.instance
+      .collection('games')
+      .orderBy('taps', descending: true)
+      .limit(30)
+      .snapshots();
 
   GameState() {
     nameController.addListener(notifyListeners);
