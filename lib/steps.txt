@@ -133,7 +133,7 @@ Widget build(BuildContext context) {
           child: LinearProgressIndicator(),
         );
       }
-      final listViewChildren = _gamesAsWidgets(snapshot.data!.docs, context);
+      final listViewChildren = _gamesAsWidgets(snapshot.data?.docs ?? [], context);
       return Column(
         children: [
           Text(
