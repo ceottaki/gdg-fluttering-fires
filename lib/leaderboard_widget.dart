@@ -5,33 +5,10 @@ import 'package:provider/provider.dart';
 
 class LeaderBoard extends StatelessWidget {
   const LeaderBoard({super.key});
+  //TODO STEP 7: Replace with _LeaderBoard build method
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<QuerySnapshot>(
-      stream: context.read<GameState>().finishedGames,
-      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        if (snapshot.hasError) {
-          return const Text('Something went wrong');
-        }
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Align(
-            alignment: Alignment.center,
-            child: LinearProgressIndicator(),
-          );
-        }
-        final listViewChildren = _gamesAsWidgets(snapshot.data!.docs, context);
-        return Column(
-          children: [
-            Text(
-              '🏆 Leaderboard 🏆',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            const SizedBox(height: 12),
-            Expanded(child: ListView(children: listViewChildren)),
-          ],
-        );
-      },
-    );
+    return const Placeholder(fallbackHeight: 200);
   }
 
   List<Widget> _gamesAsWidgets(
