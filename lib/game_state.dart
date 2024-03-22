@@ -52,7 +52,7 @@ class GameState extends ChangeNotifier {
 
   void _gameTick(Timer timer) {
     gameTimeLeft = gameDuration - timer.tick * 10 / 1000;
-    if (timer.tick == gameDuration * 100) {
+    if (timer.tick >= gameDuration * 100) {
       _endGame(timer);
     }
     notifyListeners();
